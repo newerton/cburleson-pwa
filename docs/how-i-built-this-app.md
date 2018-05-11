@@ -449,3 +449,104 @@ At this point, the Home page should render in the browser as shown:
 It's a good time to commit the code on this stable checkpoint.
 
 **Commit** Add router and Home page
+
+## Add About page
+
+Now let's see if you can repeat the exact same process we just created for the Home page to create an About page.
+Starting with the ng generate command, we'll repeat the process.
+
+This time, we'll use the shortcut `g` for generate and `c` for component.
+
+- `ng g c /pages/about`
+
+Remember, you must remove all references to the AboutComponent from `app.module.ts` after the CLI 
+generates the component for the page.
+
+
+Create `about-routing.module.ts`
+
+```
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+import { AboutComponent } from './about.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: AboutComponent
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class AboutComponentRoutingModule { }
+```
+
+
+Create `about.module.ts`
+
+```
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+
+import { AboutComponent } from './about.component';
+import { AboutComponentRoutingModule } from './about-routing.module';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    IonicModule,
+    AboutComponentRoutingModule
+  ],
+  declarations: [AboutComponent],
+  entryComponents: [AboutComponent]
+})
+export class AboutModule {}
+```
+
+Edit the about.component.html...
+
+```
+<ion-header no-border>
+  <ion-toolbar color='primary'>
+    <ion-title>About</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content no-bounce>
+  <p>It works!</p>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-title>© {{ currentYear }} Cody Burleson. All rights reserved.</ion-title>
+    <!--
+    <ion-buttons slot="end">
+      <div class="github-button"><iframe allowtransparency="true" scrolling="no" frameborder="0" src="https://buttons.github.io/buttons.html#href=https%3A%2F%2Fgithub.com%2Fabritopach%2Fangular-ionic-master-detail&amp;title=&amp;aria-label=Star%20abritopach%2Fangular-ionic-master-detail%20on%20GitHub&amp;data-icon=octicon-star&amp;data-text=Star" style="width: 50px; height: 20px; border: none;"></iframe></div>
+      <div class="github-button"><iframe allowtransparency="true" scrolling="no" frameborder="0" src="https://buttons.github.io/buttons.html#href=https%3A%2F%2Fgithub.com%2Fabritopach&amp;title=&amp;aria-label=Follow%20%40abritopach%20on%20GitHub&amp;data-text=GitHub" style="width: 67px; height: 20px; border: none;"></iframe></div>
+    </ion-buttons>
+    -->
+  </ion-toolbar>
+</ion-footer>
+```
+
+
+In src/app/app-routing.module.ts, add the following route:
+
+`{ path: 'about', loadChildren: './pages/about/about.module#AboutModule' }`
+
+Now you can test that the routing is working.
+
+When you enter the following URLs in your browser, you should navigate to 
+the respective pages:
+
+- http://localhost:4200/home
+- http://localhost:4200/about
+
+Again, it's a good time to commit this stable checkpoint.
+
+**Commit** Add About page stub
