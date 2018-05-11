@@ -448,7 +448,7 @@ At this point, the Home page should render in the browser as shown:
 
 It's a good time to commit the code on this stable checkpoint.
 
-**Commit** Add router and Home page
+**Commit** - Add router and Home page
 
 ## Add About page
 
@@ -549,7 +549,7 @@ the respective pages:
 
 Again, it's a good time to commit this stable checkpoint.
 
-**Commit** Add About page stub
+**Commit** - Add About page stub
 
 ## Bring back the split pane
 
@@ -594,6 +594,37 @@ Now, we can render the site and click between home and about!
 
 Commit the stable checkpoint.
 
-**Commit** Add ion-split-pane menu
+**Commit** - Add ion-split-pane menu
 
+## Add a menu toggle button
 
+Now, for the mobile standard, we want a menu button in the header to 
+show up when the menu is not visible. Clicking it should expand the 
+menu into view. With ionic, this is simple.
+
+In src/home/home.component.html, replace the current ion-header 
+element with this.
+
+```
+<!-- <ion-header no-border> -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+```
+
+I left a comment in place to remind us that we can have it rendered 
+with or without a shadow border.
+
+Do the same now for the About page.
+
+You should see the ion-menu-button in the header. Nothing else needs to be done for the interactive behavior.
+Click it and the menu will slide into view!
+
+![Rendered ion menu button](img/ion-menu-button.jpg)
+
+**Commit** - Add ion-menu-button to header
