@@ -1,4 +1,3 @@
-<!--
 <ion-app>
   <ion-split-pane>
     <ion-menu>
@@ -10,23 +9,17 @@
       <ion-content>
         <ion-list>
           <ion-menu-toggle autoHide="false">
-            <ion-item href="#">Home</ion-item>
+            <ion-item href="/home">Home</ion-item>
           </ion-menu-toggle>
           <ion-menu-toggle autoHide="false">
             <ion-item href="#">Blog</ion-item>
           </ion-menu-toggle>
           <ion-menu-toggle autoHide="false">
-            <ion-item href="#">About</ion-item>
+            <ion-item href="/about">About</ion-item>
           </ion-menu-toggle>
         </ion-list>
       </ion-content>
     </ion-menu>
-    <ion-nav main></ion-nav>
+    <ion-nav main><ion-router-outlet main></ion-router-outlet></ion-nav>
   </ion-split-pane>
 </ion-app>
--->
-
-<ion-app>
-  <ion-router-outlet main></ion-router-outlet>
-</ion-app>
-

@@ -550,3 +550,50 @@ the respective pages:
 Again, it's a good time to commit this stable checkpoint.
 
 **Commit** Add About page stub
+
+## Bring back the split pane
+
+Now we can bring back that cool split pane we added earlier.
+
+Change src/app/app.component.html to the following:
+
+```
+<ion-app>
+  <ion-split-pane>
+    <ion-menu>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle autoHide="false">
+            <ion-item href="/home">Home</ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle autoHide="false">
+            <ion-item href="#">Blog</ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle autoHide="false">
+            <ion-item href="/about">About</ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-nav main><ion-router-outlet main></ion-router-outlet></ion-nav>
+  </ion-split-pane>
+</ion-app>
+```
+
+Notice that I moved the `ion-router-outlet` element into the `ion-nav` element.
+I also added our routes for Home and About to the href attribute of each respective `ion-item`.
+
+Now, we can render the site and click between home and about!
+
+![Second rendered page of ion split pane](img/ion-split-pane-2.jpg)
+
+Commit the stable checkpoint.
+
+**Commit** Add ion-split-pane menu
+
+
