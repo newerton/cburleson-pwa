@@ -628,3 +628,20 @@ Click it and the menu will slide into view!
 ![Rendered ion menu button](img/ion-menu-button.jpg)
 
 **Commit** - Add ion-menu-button to header
+
+## Create the Blog Page and Blog Service
+
+Next, we're going to create the Blog page, upon which we'll render a list of 
+blog post items that we'll get from a service.
+
+At this point, you should be able to create the Blog landing page your self and hook up 
+the routing by following the same procedure we used for Home and About.
+
+Give it a go and then come back here when you get it working.
+
+Got it working? Great! So, commit the stable checkpoint.
+
+**Commit** - Add Blog main page
+
+
+
