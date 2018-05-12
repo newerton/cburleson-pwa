@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 
 import {AppRoutingModule} from './app-routing.module';
 import {BlogService} from './services/blog.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import {BlogService} from './services/blog.service';
   imports: [
     AppRoutingModule,
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot()
   ],
   providers: [BlogService],

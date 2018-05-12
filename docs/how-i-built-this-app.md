@@ -5,7 +5,7 @@ Shout out to the maker, Adrián Brito Pacheco for sharing with the world.
 
 https://github.com/abritopach/angular-ionic-master-detail
 
-##Prerequisites:
+## g servePrerequisites:
 
 Both the Angular CLI and generated project have dependencies that require Node 6.9.0 or higher, together with NPM 3 or higher.
 
@@ -819,3 +819,150 @@ Looking good!
 
 **Commit** - Add BlogService and render list on Blog landing page
 
+## Create the blog detail page
+
+Using the same procedure we used for creating Home and About, we can now create the Detail component. I won't call it BlogDetail 
+because maybe, just maybe, the view will generically useful for more than just viewing the Blog details?
+
+Anyway, we use the same procedure and we did to create Home and About. The difference this time is that we're going to 
+do some stuff a little different with the routing.
+
+For now, let's just create the component...
+
+`ng g c /pages/detail`
+
+Remember to remove the generated references to the `DetailComponent` from `app.module.ts`.
+
+Edit the generated `detail.component.ts` with the following contents. For now, we just want to log some output to the 
+console so that we can make sure we're passing a parameter in the routing system properly.
+
+```
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BlogService, Item } from '../../services/blog.service';
+
+@Component({
+  selector: 'app-detail',
+  templateUrl: './detail.component.html',
+  styleUrls: ['./detail.component.css']
+})
+export class DetailComponent implements OnInit {
+
+  item: Item;
+
+  constructor(private route: ActivatedRoute, public blogService: BlogService) { }
+
+  ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    console.log('> DetailComponent > ionViewWillEnter()');
+    // console.log('this.route.snapshot', this.route.snapshot);
+    const itemId = this.route.snapshot.paramMap.get('slug');
+    // console.log('itemId', itemId);
+    // this.item = this.blogService.getItemBySlug(itemId);
+  }
+
+}
+```
+
+We need to create `detail.module.ts` with the following contents:
+
+```
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+
+import { DetailComponent } from './detail.component';
+import { DetailComponentRoutingModule } from './detail-routing.module';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    IonicModule,
+    DetailComponentRoutingModule
+  ],
+  declarations: [DetailComponent],
+  entryComponents: [DetailComponent]
+})
+export class DetailModule {}
+```
+
+Then create `detail-routing.module.ts` with the following contents:
+
+```
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+import { DetailComponent } from './detail.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: DetailComponent
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class DetailComponentRoutingModule { }
+```
+
+Next, we'll add a parameterized route to the `routes` array in `app-routing.module.ts`
+
+```
+{ path: 'blog/:slug', loadChildren: './pages/detail/detail.module#DetailModule' },
+```
+
+The whole `app-routing.module.ts` then looks like this:
+
+```
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', loadChildren: './pages/home/home.module#HomeModule' },
+  { path: 'blog/:slug', loadChildren: './pages/detail/detail.module#DetailModule' },
+  { path: 'blog', loadChildren: './pages/blog/blog.module#BlogModule' },
+  { path: 'about', loadChildren: './pages/about/about.module#AboutModule' }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}
+
+```
+
+We're going to soon need the Angulat HTTPClientModule, so add that to `app.module.ts` as shown below (import it
+and also put it in the `imports` array...
+
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { IonicModule } from '@ionic/angular';
+
+import {AppRoutingModule} from './app-routing.module';
+import {BlogService} from './services/blog.service';
+import {HttpClientModule} from '@angular/common/http';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+  ],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    HttpClientModule,
+    IonicModule.forRoot()
+  ],
+  providers: [BlogService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```

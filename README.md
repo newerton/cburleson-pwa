@@ -5,11 +5,15 @@ Ionic 4, and potentially also Capacitor.
 
 A big shout goes out to Adrián Brito Pacheco, whose [angular-ionic-master-detail](https://github.com/abritopach/angular-ionic-master-detail) project was a big help in guiding me this far.
 
-Right now, the goal of this project is to make a blog that renders content from flat markdown files.
+Right now, the goal of this project is to make a blog that renders content from flat markdown files. Later I want to then 
+hook it up to [Carbon LDP](https://carbonldp.com).
 
 The generated result from this project can currently be viewed at:
 
 **https://codyburleson.github.io/**
+
+(Please keep in mind, however, that some things do not work as they should when served as github pages; that is only 
+mean to provide a general preview.)
 
 ![Rendered example from the project](screenshot-for-readme.jpg)
 

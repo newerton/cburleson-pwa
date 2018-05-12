@@ -28,7 +28,7 @@ import { <Name>Component } from './<name>.component';
 const routes: Routes = [
   {
     path: '',
-    component: <Nome>Component
+    component: <Name>Component
   }
 ];
 
