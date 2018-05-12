@@ -20,7 +20,7 @@ detail attribute of ion-item shows the detail arrows
         <ion-label>
           <h2>{{ item.title }}</h2>
           <h3>{{ item.description }}</h3>
-          <p>{{ item.date }}</p>
+          <p>{{item.date | amTimeAgo:true}} ago</p>
         </ion-label>
       </ion-item>
     </ion-list>
