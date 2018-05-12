@@ -1,5 +1,10 @@
 # How I built this app
 
+I used the following repo as an initial guide for ideas. 
+Shout out to the maker, Adrián Brito Pacheco for sharing with the world.
+
+https://github.com/abritopach/angular-ionic-master-detail
+
 ##Prerequisites:
 
 Both the Angular CLI and generated project have dependencies that require Node 6.9.0 or higher, together with NPM 3 or higher.
@@ -629,7 +634,7 @@ Click it and the menu will slide into view!
 
 **Commit** - Add ion-menu-button to header
 
-## Create the Blog Page and Blog Service
+## Create the Blog Page
 
 Next, we're going to create the Blog page, upon which we'll render a list of 
 blog post items that we'll get from a service.
@@ -644,4 +649,173 @@ Got it working? Great! So, commit the stable checkpoint.
 **Commit** - Add Blog main page
 
 
+## Add the blog service
+
+Execute the command to stub out the `BlogService`:
+
+`ng g service services/blog`
+
+Now, edite the generated `src/app/services/blog.service.ts` to be as follows:
+
+```
+import { Injectable } from '@angular/core';
+
+export interface Item {
+  title: string;
+  slug: string;
+  description: string;
+  date: string;
+  format?: string;
+  image: string;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class BlogService {
+
+  public items: Item[] = [];
+
+  constructor() {
+    this.items = [
+      {
+        title: 'JavaScript ternary operator - shortcut to the if statement',
+        slug: 'javascript-ternary-operator',
+        description: 'Example of the conditional (ternary) operator, which is frequently used as a shortcut for the if statement.',
+        date: '2018-01-17',
+        format: 'text/markdown',
+        image: 'https://avatars.io/twitter/juan'
+      },
+      {
+        title: 'Respond to a button click with an observable',
+        slug: 'respond-to-a-button-click-with-an-observable',
+        description: 'A recipe for responding to a button click with an RxJS Observable.',
+        date: '2018-12-04',
+        format: 'text/markdown',
+        image: 'https://avatars.io/twitter/laura'
+      },
+      {
+        title: 'SPARQL examples - list classes',
+        slug: 'sparql-examples-list-classes',
+        description: 'Example SPARQL queries that can help you list the classes in an ontology.',
+        date: '2017-12-19',
+        format: 'text/markdown',
+        image: 'https://avatars.io/twitter/luis'
+      },
+      {
+        title: 'Format currency in Angular',
+        slug: 'format-currency-in-angular',
+        description: 'How to format a number to currency with the currency pipe in Angular.',
+        date: '2016-04-29',
+        format: 'text/markdown',
+        image: 'https://avatars.io/twitter/juan'
+      }
+    ];
+  }
+
+  getItemBySlug(slug): Item {
+    return this.items.find(item => item.slug === slug);
+  }
+
+}
+
+```
+
+We're going to just work with four example content items for now.
+
+Next, we need to inject the service into the component that will use it.
+
+Edit `src/app/pages/blog/blog.component.ts` to be as follows. We import the BlogService and inject it 
+into the constructor...
+
+```
+import { Component, OnInit } from '@angular/core';
+import {BlogService} from '../../services/blog.service';
+
+@Component({
+  selector: 'app-blog',
+  templateUrl: './blog.component.html',
+  styleUrls: ['./blog.component.css']
+})
+export class BlogComponent implements OnInit {
+
+  constructor(public blogService: BlogService ) { }
+
+  ngOnInit() {
+  }
+
+}
+
+```
+
+Also, we need to add the BlogService in the providers section of the @NgModule `app.module.ts` as shown:
+
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { IonicModule } from '@ionic/angular';
+
+import {AppRoutingModule} from './app-routing.module';
+import {BlogService} from './services/blog.service';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+  ],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    IonicModule.forRoot()
+  ],
+  providers: [BlogService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+Finally, we need to edit the HTML to render the list of blog posts.
+
+Edit src/app/pages/blog.component.html to be as follows:
+
+```
+<!-- <ion-header no-border> -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Blog</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content no-bounce>
+    <ion-list>
+      <ion-item *ngFor="let item of blogService.items" detail="true" tappable routerLink="/blog/{{ item.slug }}">
+        <ion-thumbnail slot="start">
+          <img [src]="item.image" alt="">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ item.title }}</h2>
+          <h3>{{ item.description }}</h3>
+          <p>{{ item.date }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+</ion-content>
+
+<!--
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-title>© {{ currentYear }} Cody Burleson. All rights reserved.</ion-title>
+  </ion-toolbar>
+</ion-footer>
+-->
+```
+
+![Rendered blog landing page](img/blog-landing.jpg)
+
+Looking good!
+
+**Commit** - Add BlogService and render list on Blog landing page
 
