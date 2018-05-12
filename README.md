@@ -1,26 +1,37 @@
-# CburlesonPwa
+# cburleson-pwa
+
+This project is my experimental lab project for learning about Progressive Web Apps (PWAs), Angular 6, 
+Ionic 4, and potentially also Capacitor.
+
+A big shout goes out to Adrián Brito Pacheco, whose [angular-ionic-master-detail](https://github.com/abritopach/angular-ionic-master-detail) project was a big help in guiding me this far.
+
+Right now, the goal of this project is to make a blog that renders content from flat markdown files.
+
+The generated result from this project can currently be viewed at:
+
+**https://codyburleson.github.io/**
+
+![Rendered example from the project](screenshot-for-readme.jpg)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
-## Development server
+If you're interested in how I built this app from the very beginning, see docs/how-i-built-this-app.md.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Developer prerequisites
 
-## Code scaffolding
+- Globally install the Angular CLI: `npm install -g @angular/cli`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Usage
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Tasks                    | Description
+-------------------------|---------------------------------------------------------------------------------------------------------------
+npm i                    | Install everything needed
+ng serve                 | Start the app in development mode without launching browser; navigate to `http://localhost:4200/`
+npm start                | Start the app in development mode and launch browser.
+npm run test             | Run unit tests with karma and jasmine
+npm run e2e              | Run end to end tests
+npm run build            | Build the app for production
+npm run lint             | Run the linter (tslint)
 
 ## Further help
 
