@@ -1009,3 +1009,130 @@ To:
 `<ion-item *ngFor="let item of blogService.items" detail="true" tappable href="/blog/{{ item.slug }}">`
 
 **Commit** - Fix router links in blog list
+
+Now that we got that sorted out, we're navigating to the Detail page when clicking a link. Which reminds me, I need 
+some basic HTML on that page for starters. For now, edit `detail.component.html` to be as follows:
+
+```
+<!-- <ion-header no-border> -->
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Detail</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!--
+  detail attribute of ion-item shows the detail arrows
+  -->
+  <ion-content no-bounce>
+    <p>It works!</p>
+  </ion-content>
+
+  <!--
+  <ion-footer>
+    <ion-toolbar color="primary">
+      <ion-title>© {{ currentYear }} Cody Burleson. All rights reserved.</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+  -->
+```
+
+Next we want to set the title of the Detail view based on the title of the content identified by the 
+item slug (which is like an ID) passed in the route param.
+
+We can do this by uncommenting the following line in `detail.component.ts`
+
+`this.item = this.blogService.getItemBySlug(itemSlug);`
+
+Then, in `detail.component.html`, we can set the `ion-title` in the header with the following:
+
+`<ion-title>{{item.title}}</ion-title>`
+
+We also want to show a back button instead of the menu button, so that we can navigate back to the blog 
+landing page from the detail page. For this, we simply change the `ion-menu-button` to an `ion-back-button`.
+
+```
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button default-href="/blog"></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{item.title}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+```
+
+The back button navigates back in the app's history upon click. It is smart enough to know what to render based on the mode and when to show based on the navigation stack.
+
+To change what is displayed in the back button, use the text and icon properties.
+
+The default-href attribute specifies a url to navigate back to by default when there is no history. That could happen if someone landed directly on the page, for example.
+
+We also want the actual document title to reflect the page title - that is: the title in the HTML head (so that it's 
+what's saved as a bookmark and what shows in the web browser's tab or title bar). For this, angular has the 
+Title service.
+
+See: [Set the Page Title in Angular](https://codyburleson.com/display/blog/2016/10/31/Set+the+Page+Title+in+Angular)
+
+I've moved some stuff into the `ngOnInit()` method. The `detail.component.ts` now, at this point, looks like this:
+
+```
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BlogService, Item } from '../../services/blog.service';
+import { Title } from '@angular/platform-browser';
+
+@Component({
+  selector: 'app-detail',
+  templateUrl: './detail.component.html',
+  styleUrls: ['./detail.component.css']
+})
+export class DetailComponent implements OnInit {
+
+  item: Item;
+
+  constructor(private route: ActivatedRoute, public blogService: BlogService, private titleService: Title) {
+    console.log('DetailComponent > contructor()');
+  }
+
+  ngOnInit() {
+    // console.log('DetailComponent > ngOnInit()');
+    const itemSlug = this.route.snapshot.paramMap.get('slug');
+    this.item = this.blogService.getItemBySlug(itemSlug);
+    // console.log('slug: ', itemSlug);
+    this.setTitle(this.item.title + '- Cody Burleson');
+  }
+
+  ionViewWillEnter() {
+    // console.log('> DetailComponent > ionViewWillEnter()');
+    // console.log('this.route.snapshot', this.route.snapshot);
+  }
+
+
+  private setTitle( newTitle: string) {
+    this.titleService.setTitle( newTitle );
+  }
+
+}
+```
+
+The document title gets my site name as well as the page title. So the page title that shows in the header bar and 
+the actual document title are slightly different.
+
+Now you can add the Angular title service to the Home, Blog, and About pages components while we're on the subject.
+
+After doing this, I can see that the browser client document titles are changing when I change views. Except 
+there is some problem most times when I go back to Home. The title of that view does not then change back, but only 
+that one. I'm not sure why, but it seems to be fixed by also setting the title for Home in `ionViewWillEnter()`
+
+```
+  ionViewWillEnter() {
+    // For some reason, we need it here too...
+    this.setTitle('Cody Burleson');
+  }
+```
+
+**Commit** Setup Detail header title and page titles

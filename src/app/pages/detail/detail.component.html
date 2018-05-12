@@ -1,3 +1,24 @@
-<p>
-  detail works!
-</p>
+<!-- <ion-header no-border> -->
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button default-href="/blog"></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{item.title}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!--
+  detail attribute of ion-item shows the detail arrows
+  -->
+  <ion-content no-bounce>
+    <p>It works!</p>
+  </ion-content>
+
+  <!--
+  <ion-footer>
+    <ion-toolbar color="primary">
+      <ion-title>© {{ currentYear }} Cody Burleson. All rights reserved.</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+  -->

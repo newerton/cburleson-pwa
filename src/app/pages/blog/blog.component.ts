@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BlogService} from '../../services/blog.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blog',
@@ -8,9 +9,14 @@ import {BlogService} from '../../services/blog.service';
 })
 export class BlogComponent implements OnInit {
 
-  constructor(public blogService: BlogService ) { }
+  constructor(public blogService: BlogService,  private titleService: Title ) { }
 
   ngOnInit() {
+    this.setTitle('Blog - Cody Burleson');
+  }
+
+  public setTitle( newTitle: string) {
+    this.titleService.setTitle( newTitle );
   }
 
 }

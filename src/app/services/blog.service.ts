@@ -45,7 +45,7 @@ export class BlogService {
       },
       {
         title: 'Format currency in Angular',
-        slug: 'format-currency-in-angular',
+        slug: 'format-angular-currency',
         description: 'How to format a number to currency with the currency pipe in Angular.',
         date: '2016-04-29',
         format: 'text/markdown',
