@@ -36,6 +36,7 @@ npm run test             | Run unit tests with karma and jasmine
 npm run e2e              | Run end to end tests
 npm run build            | Build the app for production
 npm run lint             | Run the linter (tslint)
+npm run docker           | Build the docker image and run the container (experimental)
 
 ## Further help
 
