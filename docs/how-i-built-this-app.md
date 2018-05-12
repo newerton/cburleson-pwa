@@ -966,3 +966,46 @@ import {HttpClientModule} from '@angular/common/http';
 })
 export class AppModule { }
 ```
+
+**Commit** - Add Detail page component
+
+At this point, we can manually enter one of the detail routes into the browser. For example:
+
+http://localhost:4200/blog/respond-to-a-button-click-with-an-observable
+
+And when we do this, we can see in the console output that the DetailComponent is being reached and 
+that it is passing the slug as a route parameter...
+
+```
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+detail.component.ts:15 DetailComponent > contructor()
+detail.component.ts:19 DetailComponent > ngOnInit()
+detail.component.ts:23 > DetailComponent > ionViewWillEnter()
+detail.component.ts:26 slug respond-to-a-button-click-with-an-observable
+ion-router-outlet.js:227 ionRouterOutletActivated
+```
+
+But there's a problem. For some reason, the items in the list on the blog landing page 
+are generating an anchor tag with href="#". This, in turn, is overriding the proper interaction 
+where clicking an item in the list will navigate and pass the route. If you inspect the html you 
+can see the following for an item:
+
+``` html
+<ion-item _ngcontent-c2="" detail="true" tappable="" tabindex="0" ng-reflect-detail="true" ng-reflect-router-link="/blog/javascript-ternary-opera" class="hydrated">
+  <a href="#" class="item item-md item-detail-push hydrated activated">
+    ...
+  </a>
+</ion-item>
+```
+
+This is fixed by changing the `routerLink` attribute in the `ion-item` to `href`.
+
+From:
+
+`<ion-item *ngFor="let item of blogService.items" detail="true" tappable routerLink="/blog/{{ item.slug }}">`
+
+To:
+
+`<ion-item *ngFor="let item of blogService.items" detail="true" tappable href="/blog/{{ item.slug }}">`
+
+**Commit** - Fix router links in blog list

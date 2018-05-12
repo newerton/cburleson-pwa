@@ -8,9 +8,12 @@
   </ion-toolbar>
 </ion-header>
 
+<!--
+detail attribute of ion-item shows the detail arrows
+-->
 <ion-content no-bounce>
     <ion-list>
-      <ion-item *ngFor="let item of blogService.items" detail="true" tappable routerLink="/blog/{{ item.slug }}">
+      <ion-item *ngFor="let item of blogService.items" detail="true" tappable href="/blog/{{ item.slug }}">
         <ion-thumbnail slot="start">
           <img [src]="item.image" alt="">
         </ion-thumbnail>
