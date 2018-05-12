@@ -25,7 +25,7 @@ export class BlogService {
         description: 'Example of the conditional (ternary) operator, which is frequently used as a shortcut for the if statement.',
         date: '2018-01-17',
         format: 'text/markdown',
-        image: 'https://avatars.io/twitter/juan'
+        image: '/assets/img/javascript-logo.svg'
       },
       {
         title: 'Respond to a button click with an observable',
@@ -33,7 +33,7 @@ export class BlogService {
         description: 'A recipe for responding to a button click with an RxJS Observable.',
         date: '2018-12-04',
         format: 'text/markdown',
-        image: 'https://avatars.io/twitter/laura'
+        image: '/assets/img/rxjs-logo.png'
       },
       {
         title: 'SPARQL examples - list classes',
@@ -41,7 +41,7 @@ export class BlogService {
         description: 'Example SPARQL queries that can help you list the classes in an ontology.',
         date: '2017-12-19',
         format: 'text/markdown',
-        image: 'https://avatars.io/twitter/luis'
+        image: '/assets/img/sparql-logo.png'
       },
       {
         title: 'Format currency in Angular',
@@ -49,7 +49,7 @@ export class BlogService {
         description: 'How to format a number to currency with the currency pipe in Angular.',
         date: '2016-04-29',
         format: 'text/markdown',
-        image: 'https://avatars.io/twitter/juan'
+        image: '/assets/img/angular-logo.svg'
       }
     ];
   }

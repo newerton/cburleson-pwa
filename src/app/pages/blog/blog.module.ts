@@ -9,7 +9,7 @@ import { BlogComponentRoutingModule } from './blog-routing.module';
   imports: [
     CommonModule,
     IonicModule,
-    BlogComponentRoutingModule
+    BlogComponentRoutingModule,
   ],
   declarations: [BlogComponent],
   entryComponents: [BlogComponent]

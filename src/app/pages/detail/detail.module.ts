@@ -5,11 +5,14 @@ import { IonicModule } from '@ionic/angular';
 import { DetailComponent } from './detail.component';
 import { DetailComponentRoutingModule } from './detail-routing.module';
 
+import { MarkdownModule } from '../../../markdown/markdown.module';
+
 @NgModule({
   imports: [
     CommonModule,
     IonicModule,
-    DetailComponentRoutingModule
+    DetailComponentRoutingModule,
+    MarkdownModule.forRoot()
   ],
   declarations: [DetailComponent],
   entryComponents: [DetailComponent]

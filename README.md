@@ -19,7 +19,7 @@ mean to provide a general preview.)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
-If you're interested in how I built this app from the very beginning, see docs/how-i-built-this-app.md.
+If you're interested in how I built this app from the very beginning, see all the `docs/devlog-x.md files`
 
 ## Developer prerequisites
 
