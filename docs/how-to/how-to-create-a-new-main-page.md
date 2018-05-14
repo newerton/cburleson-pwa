@@ -71,7 +71,7 @@ export class <Name>Module {}
 
 ## Step 5 - Add route for the new page
 
-In app-routing.module.ts, add a new route to the `routes` array. For example:
+In `app-routing.module.ts`, add a new route to the `routes` array. For example:
 
 `{ path: 'blog', loadChildren: './pages/blog/blog.module#BlogModule' },`
 

@@ -1,0 +1,60 @@
+<!-- <ion-header no-border> -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Life Time Calendar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content no-bounce padding>
+
+  <h2>Death is imminent. Life is awesome. Make it count.</h2>
+
+  <p>This is your whole life in a sobering glance. There are ninety 90 years (left to right) and 52 weeks in a year (top-to-bottom).</p>
+
+  <p>To personalize the calendar, enter your birthday and gender.</p>
+
+  <form (ngSubmit)="logForm()">
+    <ion-list>
+      <ion-item>
+        <!-- ion-label color="primary">Birthday</ion-label -->
+        <label>Birthday:&nbsp;&nbsp;&nbsp;</label>
+        <!--ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="calForm.birthday" name="birthday"></ion-datetime-->
+        <input type="date" [(ngModel)]="calForm.birthday" name="birthday">
+      </ion-item>
+      <ion-item>
+        <label>Gender:&nbsp;&nbsp;&nbsp;</label>
+        <input type="radio" name="gender" value="male" [(ngModel)]="calForm.gender">&nbsp;Male&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="gender" value="female" [(ngModel)]="calForm.gender">&nbsp;Female
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="renderGraph(calForm.birthday, calForm.gender)">Personalize</ion-button>
+      </ion-item>
+    </ion-list>
+  </form>
+
+  <p><em>Best viewed in a desktop browser.</em></p>
+
+  <div id="graph" style="overflow: auto"></div>
+
+  <div class="row">
+  <div class="float-left">Legend:&nbsp;&nbsp;</div>
+  <div class="float-left"><div class="legend"></div> A week,&nbsp;&nbsp;</div>
+  <div class="float-left"><div class="legend elapsed" style="width:9px"></div> A week lived,&nbsp;&nbsp;</div>
+  <div class="float-left"><div class="legend expected" style="width:9px"></div> Life expectancy by gender,&nbsp;&nbsp;</div>
+  <div class="float-left"><div class="legend expected elapsed" style="width:9px"></div> A week lived in the life expectancy year</div>
+  </div>
+
+
+  <footer class="footer">
+
+    <p style="clear: both">Life Time Calendar/Calculator Version 3 by Cody Burleson, 2018.</p>
+
+    <p>Inspired by Tim Urban's TED talk, <a href="https://www.ted.com/talks/tim_urban_inside_the_mind_of_a_master_procrastinator">Inside the mind of a master procrastinator</a>, as well as articles from his blog, <a href="http://waitbutwhy.com/">Wait But Why</a>.</p>
+
+    <p>Source of Life expectancy by gender: Centers for Disease Control and Prevention, 2012 (<em>Females: 81 years, Males: 76 years</em>)</p>
+  </footer>
+
+</ion-content>
