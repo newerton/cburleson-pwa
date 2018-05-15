@@ -5,6 +5,16 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Blog</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showFilter()" button-type="bar-button">
+        <ion-icon ios="ios-options-outline" md="md-options" size="large"></ion-icon>
+      </ion-button>
+      <!--
+      <ion-button (click)="toggleSearch()" button-type="bar-button">
+        <ion-icon ios="ios-search" md="md-search" size="large"></ion-icon>
+      </ion-button>
+      -->
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
