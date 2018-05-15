@@ -44,6 +44,14 @@ export class BlogService {
         image: '/assets/img/sparql-logo.png'
       },
       {
+        title: 'SPARQL examples - select',
+        slug: 'sparql-examples-select',
+        description: 'Example SPARQL SELECT queries.',
+        date: '2017-12-17',
+        format: 'text/markdown',
+        image: '/assets/img/sparql-logo.png'
+      },
+      {
         title: 'Index of item within Angular ngFor loop',
         slug: 'index-of-item-within-angular-ngfor-loop',
         description: 'Here\'s how to get and print the index (or the iteration number) of the current item in an ngFor loop.',

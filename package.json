@@ -26,7 +26,7 @@
     "@ionic/schematics-angular": "^1.0.0-rc.6",
     "core-js": "^2.5.6",
     "d3": "^5.4.0",
-    "markd": "^1.2.0",
+    "marked": "^0.3.19",
     "ngx-moment": "^2.0.0",
     "prismjs": "^1.14.0",
     "rxjs": "6.1.0",

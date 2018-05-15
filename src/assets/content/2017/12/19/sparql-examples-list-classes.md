@@ -2,7 +2,7 @@ Example SPARQL queries that can help you list the classes in an ontology.
 
 ## List all classes
 
-```
+``` sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
   
 SELECT DISTINCT ?type
@@ -13,7 +13,7 @@ WHERE {
 
 Note: The SPARQL keyword `a` is a shortcut for the common predicate `rdf:type`, giving the class of a resource.
 
-```
+``` sparql
 List root classes
 SELECT ?directSub ?super
  WHERE { ?directSub rdfs:subClassOf ?super .
@@ -26,7 +26,7 @@ SELECT ?directSub ?super
 
 ## List all classes with a given prefix
 
-```
+``` sparql
 PREFIX bc: <http://base22.com/ont/bc#>
  
 SELECT DISTINCT ?type
@@ -38,7 +38,7 @@ WHERE {
 
 ## List class hierarchy
 
-```
+``` sparql
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
  
@@ -57,7 +57,7 @@ Note that when a reasoner is enabled classes may typically be inferred to be `rd
 
 Give a class hierarchy, but filter out several structural elements so that we only end up with the unique classes in our ontology.
 
-```
+``` sparql
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -84,7 +84,7 @@ Note that when a reasoner is enabled classes may typically be inferred to be `rd
 
 This is similar to the query above, but uses the Sesame-specific `sesame:directSubClassOf` to get only direct subclasses. This would work in any RDF4J (formerly Sesame) system such as Graph DB.
 
-```
+``` sparql
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>

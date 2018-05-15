@@ -11,13 +11,12 @@ import { Title } from '@angular/platform-browser';
     template: `<h1>MyApp</h1>`
 })
 export class MyAppComponent {
+
     constructor(private titleService: Title) {}
- 
  
     ngOnInit() {
         this.setTitle('My Web Page Title');
     }
- 
  
     public setTitle( newTitle: string) {
         this.titleService.setTitle( newTitle );

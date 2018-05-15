@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { MarkdownComponent } from './markdown.component';
 import { MarkdownService } from './markdown.service';
 import { MarkdownConfig } from './markdown.config';

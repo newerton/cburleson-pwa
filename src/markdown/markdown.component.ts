@@ -1,8 +1,16 @@
-import { Component, ElementRef, OnInit, AfterViewInit, Input, PLATFORM_ID, Inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { MarkdownService } from './markdown.service';
-// import './prism.languages';
+
 import { isPlatformBrowser } from '@angular/common';
 import * as Prism from 'prismjs';
+
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-java';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-sass';
+import 'prismjs/components/prism-scss';
+import 'prismjs/components/prism-typescript';
+import './prism-sparql';
 
 @Component({
     selector: 'markdown,[Markdown]',
@@ -13,7 +21,7 @@ import * as Prism from 'prismjs';
         }`
     ]
 })
-export class MarkdownComponent implements OnInit {
+export class MarkdownComponent implements AfterViewInit, OnInit {
     private _path: string;
     private _data: string;
     private _md: any;
@@ -24,23 +32,23 @@ export class MarkdownComponent implements OnInit {
         private mdService: MarkdownService,
         private el: ElementRef,
         @Inject(PLATFORM_ID) private platformId: string
-    ) { }
+    ) {}
 
     ngOnInit() {
 
     }
 
     @Input()
-    set path(value:string) {
-      if(value){
+    set path(value: string) {
+      if (value) {
         this._path = value;
         this.onPathChange();
       }
     }
 
     @Input()
-    set data(value:string) {
-      if(value){
+    set data(value: string) {
+      if (value) {
         this._data = value;
         this.onDataChange(value);
       }
@@ -48,7 +56,7 @@ export class MarkdownComponent implements OnInit {
 
 
     // on input
-    onDataChange(data:string){
+    onDataChange(data: string) {
       if (data) {
         this.el.nativeElement.innerHTML = this.mdService.compile(data);
       } else {
@@ -61,7 +69,7 @@ export class MarkdownComponent implements OnInit {
      *  After view init
      */
     ngAfterViewInit() {
-      if(this._path) {
+      if (this._path) {
         this.onPathChange();
       } else if (!this._data) {
         this.processRaw();
@@ -133,8 +141,8 @@ export class MarkdownComponent implements OnInit {
     }
 }
 
-function decodeHtml(html:string) { // https://stackoverflow.com/a/7394787/588521
-    var txt = document.createElement("textarea");
+function decodeHtml(html: string) { // https://stackoverflow.com/a/7394787/588521
+    const txt = document.createElement('textarea');
     txt.innerHTML = html;
     return txt.value;
 }
