@@ -67,6 +67,7 @@ import { <Name>ComponentRoutingModule } from './<name>-routing.module';
   entryComponents: [<Name>Component]
 })
 export class <Name>Module {}
+
 ```
 
 ## Step 5 - Add route for the new page
