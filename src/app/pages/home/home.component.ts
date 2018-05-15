@@ -13,20 +13,20 @@ export class HomeComponent implements OnInit {
   constructor( private titleService: Title ) { }
 
   ngOnInit() {
-    console.log('HomeComponent > ngOnInit()');
+    // console.log('HomeComponent > ngOnInit()');
     this.setTitle('Cody Burleson');
     this.currentYear = new Date().getFullYear();
   }
 
   ionViewWillEnter() {
-    console.log('> HomeComponent > ionViewWillEnter()');
+    // console.log('> HomeComponent > ionViewWillEnter()');
     // console.log('this.route.snapshot', this.route.snapshot);
     // For some reason, we need it here too...
     this.setTitle('Cody Burleson');
   }
 
   public setTitle( newTitle: string) {
-    console.log('HomeComponent > setTitle(): ', newTitle);
+    // console.log('HomeComponent > setTitle(): ', newTitle);
     this.titleService.setTitle( newTitle );
   }
 

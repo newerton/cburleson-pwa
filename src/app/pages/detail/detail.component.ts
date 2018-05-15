@@ -21,7 +21,7 @@ export class DetailComponent implements OnInit {
   fetchPath: string;
 
   constructor(private route: ActivatedRoute, public blogService: BlogService, private titleService: Title) {
-    console.log('DetailComponent > contructor()');
+    // console.log('DetailComponent > contructor()');
   }
 
   ngOnInit() {
@@ -57,7 +57,7 @@ export class DetailComponent implements OnInit {
       path += '.md';
     }
     this.fetchPath = path;
-    console.log('- DetailComponent > buildFetchPath() > built: ', this.fetchPath);
+    // console.log('- DetailComponent > buildFetchPath() > built: ', this.fetchPath);
   }
 
 }
