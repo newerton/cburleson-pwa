@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { IonicModule } from '@ionic/angular';
 
-import {AppRoutingModule} from './app-routing.module';
-import {BlogService} from './services/blog.service';
-import {HttpClientModule} from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { BlogService } from './services/blog.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [

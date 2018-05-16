@@ -1,5 +1,13 @@
 Example SPARQL queries that can help you list the classes in an ontology.
 
+**Contents**
+
+- [List all classes](/blog/sparql-examples-list-classes#list-all-classes)
+- [List all classes with a given prefix](/blog/sparql-examples-list-classes#list-all-classes-with-a-given-prefix)
+- [List class hierarchy](/blog/sparql-examples-list-classes#list-class-hierarchy)
+- [List class hierarchy - filtered](/blog/sparql-examples-list-classes#list-class-hierarchy-filtered)
+- [List class hierarchy with direct subclasses only](/blog/sparql-examples-list-classes#list-class-hierarchy-with-direct-subclasses-only)
+
 ## List all classes
 
 ``` sparql
