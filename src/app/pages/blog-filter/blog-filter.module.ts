@@ -14,4 +14,16 @@ import { BlogFilterComponentRoutingModule } from './blog-filter-routing.module';
   declarations: [BlogFilterComponent],
   entryComponents: [BlogFilterComponent]
 })
-export class BlogFilterModule {}
+export class BlogFilterModule {
+
+
+  dismiss() {
+
+  }
+
+  applyFilters() {
+
+  }
+
+
+}

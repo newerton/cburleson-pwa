@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {BlogService} from '../../services/blog.service';
+import {BlogService, Item} from '../../services/blog.service';
 import { Title } from '@angular/platform-browser';
+import {ModalController} from '@ionic/angular';
+import {BlogFilterComponent} from '../blog-filter/blog-filter.component';
 
 @Component({
   selector: 'app-blog',
@@ -10,10 +12,21 @@ import { Title } from '@angular/platform-browser';
 })
 export class BlogComponent implements OnInit {
 
-  constructor(public blogService: BlogService,  private titleService: Title ) { }
+  items: Item[];
+
+  constructor(
+    public blogService: BlogService,
+    private titleService: Title,
+    public modalCtrl: ModalController) { }
 
   ngOnInit() {
+    console.log('> BlogComponent.ngOnInit()');
     this.setTitle('Blog - Cody Burleson');
+
+    this.blogService.load().subscribe((data: Item[]) => {
+      this.items = data;
+    });
+    console.log('- BlogComponent.ngOnInit() > items:%o', this.items);
   }
 
   public setTitle( newTitle: string) {
@@ -22,6 +35,27 @@ export class BlogComponent implements OnInit {
 
   showFilter() {
     console.log('> BlogComponent > showFilter()');
+
+    // const modal = this.modalCtrl.create('BlogFilterComponent');
+    // modal.present();
+    /*
+    modal.onWillDismiss((data: any[]) => {
+      if (data) {
+        this.excludeTracks = data;
+        this.updateSchedule();
+      }
+    });*/
+
+
+  }
+
+  async presentModal() {
+    const modalController = document.querySelector('ion-modal-controller');
+    await modalController.componentOnReady();
+    const modalElement = await modalController.create({
+      component: 'BlogFilterComponent'
+    });
+    modalElement.present();
   }
 
   toggleSearch() {
