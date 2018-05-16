@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "docker": "docker build -t cburleson-pwa . && docker run -d -p 4200:80 cburleson-pwa"
+    "docker": "docker build -t cburleson-pwa . && docker run -d -p 80:80 cburleson-pwa"
   },
   "private": true,
   "dependencies": {

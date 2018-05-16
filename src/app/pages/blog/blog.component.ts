@@ -22,11 +22,18 @@ export class BlogComponent implements OnInit {
   ngOnInit() {
     console.log('> BlogComponent.ngOnInit()');
     this.setTitle('Blog - Cody Burleson');
+  }
 
+  ionViewWillEnter() {
+    console.log('- BlogComponent.ionViewWillEnter()');
     this.blogService.load().subscribe((data: Item[]) => {
       this.items = data;
     });
-    console.log('- BlogComponent.ngOnInit() > items:%o', this.items);
+    console.log('- BlogComponent.ionViewWillEnter() > items:%o', this.items);
+  }
+
+  ionViewDidLoad() {
+    console.log('> BlogComponent.ionViewDidLoad()');
   }
 
   public setTitle( newTitle: string) {

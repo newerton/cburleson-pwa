@@ -1,5 +1,13 @@
 [
   {
+    "title": "Docker cheat sheet",
+    "slug": "docker-cheat-sheet",
+    "description": "Various common Docker commands and helpful notes.",
+    "date": "2018-05-16",
+    "format": "text/markdown",
+    "image": "/assets/img/docker-logo.png"
+  },
+  {
     "title": "JavaScript ternary operator - shortcut to the if statement",
     "slug": "javascript-ternary-operator",
     "description": "Example of the conditional (ternary) operator, which is frequently used as a shortcut for the if statement.",
@@ -48,12 +56,27 @@
     "image": "/assets/img/sparql-logo.png"
   },
   {
+    "title": "Serve static resources with Spring boot",
+    "slug": "serve-static-resources-with-spring-boot",
+    "date": "2017-08-31",
+    "format": "text/markdown",
+    "image": "/assets/img/spring-boot-project-logo.png"
+  },
+  {
     "title": "Index of item within Angular ngFor loop",
     "slug": "index-of-item-within-angular-ngfor-loop",
     "description": "Here's how to get and print the index (or the iteration number) of the current item in an ngFor loop.",
     "date": "2017-08-23",
     "format": "text/markdown",
     "image": "/assets/img/angular-logo.svg"
+  },
+  {
+    "title": "Logging with Spring Boot",
+    "slug": "logging-with-spring-boot",
+    "description": "Quick and simple tips to get your Spring Boot logs rolling.",
+    "date": "2017-04-04",
+    "format": "text/markdown",
+    "image": "/assets/img/spring-boot-project-logo.png"
   },
   {
     "title": "Set the page title in Angular",
@@ -70,6 +93,37 @@
     "date": "2016-04-29",
     "format": "text/markdown",
     "image": "/assets/img/angular-logo.svg"
+  },
+  {
+    "title": "Start a Simple HTTP Server from any folder on a Mac",
+    "slug": "start-simple-http-server-from-any-folder-on-a-mac",
+    "date": "2014-10-06",
+    "format": "text/markdown"
+  },
+  {
+    "title": "Mapping to a View in Spring When No Controller Logic Is Required",
+    "slug": "mapping-to-spring-view-without-controller",
+    "date": "2013-07-20",
+    "format": "text/markdown",
+    "image": "/assets/img/spring-logo.svg"
+  },
+  {
+    "title": "Automatically build and include one Eclipse project into another",
+    "slug": "automatically-build-and-include-eclipse-project-into-another",
+    "date": "2013-05-31",
+    "format": "text/markdown"
+  },
+  {
+    "title": "Installing the Java Plugin for 64bit Firefox on CentOS 6.4",
+    "slug": "installing-java-plugin-for-64bit-firefox-on-centos",
+    "date": "2013-05-06",
+    "format": "text/markdown"
+  },
+  {
+    "title": "How to display user attributes in a WebSphere Portal theme",
+    "slug": "display-user-attributes-in-websphere-portal-theme",
+    "date": "2013-01-22",
+    "format": "text/markdown"
   },
   {
     "title": "How to shrink a Windows VM on VMWare Fusion for Mac",

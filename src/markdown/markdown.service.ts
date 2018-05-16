@@ -8,7 +8,6 @@ import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/map';
 
 
-
 @Injectable()
 export class MarkdownService {
   private _renderer:any = new markedNs.Renderer();

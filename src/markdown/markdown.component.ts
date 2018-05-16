@@ -10,6 +10,9 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-sass';
 import 'prismjs/components/prism-scss';
 import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-properties';
+
 import './prism-sparql';
 
 @Component({

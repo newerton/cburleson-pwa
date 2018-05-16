@@ -62,7 +62,7 @@ export class BlogService {
         item.image = '/assets/img/thumbnail-blog-post.png';
         console.log(item.slug + ' has no image');
       }
-    }
+    });
 
 
     return this.items;
