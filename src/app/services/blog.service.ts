@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 export interface Item {
   title: string;
   slug: string;
-  description: string;
+  description?: string;
   date: string;
   format?: string;
-  image: string;
+  image?: string;
 }
 
 @Injectable({
@@ -36,6 +36,14 @@ export class BlogService {
         image: '/assets/img/rxjs-logo.png'
       },
       {
+        title: 'SPARQL examples - construct',
+        slug: 'sparql-examples-construct',
+        description: 'An example SPARQL construct query.',
+        date: '2017-12-19',
+        format: 'text/markdown',
+        image: '/assets/img/sparql-logo.png'
+      },
+      {
         title: 'SPARQL examples - list classes',
         slug: 'sparql-examples-list-classes',
         description: 'Example SPARQL queries that can help you list the classes in an ontology.',
@@ -48,6 +56,14 @@ export class BlogService {
         slug: 'sparql-examples-select',
         description: 'Example SPARQL SELECT queries.',
         date: '2017-12-17',
+        format: 'text/markdown',
+        image: '/assets/img/sparql-logo.png'
+      },
+      {
+        title: 'SPARQL examples - ask',
+        slug: 'sparql-examples-ask',
+        description: 'SPARQL ASK query examples.',
+        date: '2017-08-31',
         format: 'text/markdown',
         image: '/assets/img/sparql-logo.png'
       },
@@ -74,6 +90,12 @@ export class BlogService {
         date: '2016-04-29',
         format: 'text/markdown',
         image: '/assets/img/angular-logo.svg'
+      },
+      {
+        title: 'How to shrink a Windows VM on VMWare Fusion for Mac',
+        slug: 'shrink-a-windows-vm-on-vmware-fusion-for-mac',
+        date: '2013-01-05',
+        format: 'text/markdown'
       }
 
     ];
