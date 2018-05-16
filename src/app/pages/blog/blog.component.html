@@ -1,20 +1,22 @@
 <!-- <ion-header no-border> -->
+
+<!-- ion-modal-controller></ion-modal-controller -->
+
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Blog</ion-title>
+
+
     <ion-buttons slot="end">
       <ion-button (click)="showFilter()" button-type="bar-button">
-        <ion-icon ios="ios-options-outline" md="md-options" size="large"></ion-icon>
+        <ion-icon slot="icon-only" ios="ios-options-outline" md="md-options"></ion-icon>
       </ion-button>
-      <!--
-      <ion-button (click)="toggleSearch()" button-type="bar-button">
-        <ion-icon ios="ios-search" md="md-search" size="large"></ion-icon>
-      </ion-button>
-      -->
     </ion-buttons>
+
+
   </ion-toolbar>
 </ion-header>
 
@@ -23,7 +25,7 @@ detail attribute of ion-item shows the detail arrows
 -->
 <ion-content no-bounce>
     <ion-list>
-      <ion-item *ngFor="let item of blogService.items" detail="true" tappable href="/blog/{{ item.slug }}">
+      <ion-item *ngFor="let item of items" detail="true" tappable href="/blog/{{ item.slug }}">
         <ion-thumbnail slot="start">
           <img [src]="item.image" alt="">
         </ion-thumbnail>

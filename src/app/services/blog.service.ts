@@ -1,4 +1,9 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/of';
 
 export interface Item {
   title: string;
@@ -14,94 +19,57 @@ export interface Item {
 })
 export class BlogService {
 
-  public items: Item[] = [];
+  public items: Item[];
 
-  constructor() {
+  constructor(public http: HttpClient) {
+    console.log('>> BlogService.constructor');
+  }
 
-    this.items = [
-      {
-        title: 'JavaScript ternary operator - shortcut to the if statement',
-        slug: 'javascript-ternary-operator',
-        description: 'Example of the conditional (ternary) operator, which is frequently used as a shortcut for the if statement.',
-        date: '2018-01-17',
-        format: 'text/markdown',
-        image: '/assets/img/javascript-logo.svg'
-      },
-      {
-        title: 'Respond to a button click with an observable',
-        slug: 'respond-to-a-button-click-with-an-observable',
-        description: 'A recipe for responding to a button click with an RxJS Observable.',
-        date: '2017-12-04',
-        format: 'text/markdown',
-        image: '/assets/img/rxjs-logo.png'
-      },
-      {
-        title: 'SPARQL examples - construct',
-        slug: 'sparql-examples-construct',
-        description: 'An example SPARQL construct query.',
-        date: '2017-12-19',
-        format: 'text/markdown',
-        image: '/assets/img/sparql-logo.png'
-      },
-      {
-        title: 'SPARQL examples - list classes',
-        slug: 'sparql-examples-list-classes',
-        description: 'Example SPARQL queries that can help you list the classes in an ontology.',
-        date: '2017-12-19',
-        format: 'text/markdown',
-        image: '/assets/img/sparql-logo.png'
-      },
-      {
-        title: 'SPARQL examples - select',
-        slug: 'sparql-examples-select',
-        description: 'Example SPARQL SELECT queries.',
-        date: '2017-12-17',
-        format: 'text/markdown',
-        image: '/assets/img/sparql-logo.png'
-      },
-      {
-        title: 'SPARQL examples - ask',
-        slug: 'sparql-examples-ask',
-        description: 'SPARQL ASK query examples.',
-        date: '2017-08-31',
-        format: 'text/markdown',
-        image: '/assets/img/sparql-logo.png'
-      },
-      {
-        title: 'Index of item within Angular ngFor loop',
-        slug: 'index-of-item-within-angular-ngfor-loop',
-        description: 'Here\'s how to get and print the index (or the iteration number) of the current item in an ngFor loop.',
-        date: '2017-08-23',
-        format: 'text/markdown',
-        image: '/assets/img/angular-logo.svg'
-      },
-      {
-        title: 'Set the page title in Angular',
-        slug: 'set-the-page-title-in-angular',
-        description: 'How to set the title of the HTML page in Angular; it\'s good for SEO!',
-        date: '2016-10-31',
-        format: 'text/markdown',
-        image: '/assets/img/angular-logo.svg'
-      },
-      {
-        title: 'Format currency in Angular',
-        slug: 'format-angular-currency',
-        description: 'How to format a number to currency with the currency pipe in Angular.',
-        date: '2016-04-29',
-        format: 'text/markdown',
-        image: '/assets/img/angular-logo.svg'
-      },
-      {
-        title: 'How to shrink a Windows VM on VMWare Fusion for Mac',
-        slug: 'shrink-a-windows-vm-on-vmware-fusion-for-mac',
-        date: '2013-01-05',
-        format: 'text/markdown'
+  load(): any {
+    console.log('>> BlogService.load');
+
+    if (this.items) {
+      // The of operator accepts a number of items as parameters, and returns an Observable that emits each of
+      // these parameters, in order, as its emitted sequence. In this case, we will only be returning this.items
+      // to any subscriber.
+      console.log('<< BlogService.load < returning previously fetched data: %o', this.items);
+      return Observable.of(this.items);
+    } else {
+      // http.get() creates an observable.
+      // map() creates and returns its own new observable from the observable that http.get() created,
+      // which we can then subscribe to. Therefore, we can subscribe to the result of this method.
+      //
+      // The Map operator applies a function of your choosing to each item emitted by the source Observable, and
+      // returns an Observable that emits the results of these function applications.
+      console.log('<< BlogService < load() < returning data with new fetch');
+      return this.http.get('assets/data/blog-data.json').map(this.processData, this);
+    }
+  }
+
+  // A place for post-processing, before making data available to the view.
+  processData(data: Item[]) {
+    console.log('>> BlogService.processData(%o)', data);
+
+    // Note: JSON is an assumed default and no longer needs to be explicitly parsed like this:
+    // this.data = data.json();
+
+    this.items = data;
+
+    this.items.forEach((item: Item) => {
+      // Items are not required to have an image, but we want want in the view. If the given
+      // item has no image, give it the default thumbnail image.
+      if ( !item.image ) {
+        item.image = '/assets/img/thumbnail-blog-post.png';
+        console.log(item.slug + ' has no image');
       }
+    }
 
-    ];
+
+    return this.items;
   }
 
   getItemBySlug(slug): Item {
+    console.log('>> BlogService.getItemBySlug("%s")', slug);
     return this.items.find(item => item.slug === slug);
   }
 

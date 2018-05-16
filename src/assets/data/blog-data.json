@@ -1,0 +1,81 @@
+[
+  {
+    "title": "JavaScript ternary operator - shortcut to the if statement",
+    "slug": "javascript-ternary-operator",
+    "description": "Example of the conditional (ternary) operator, which is frequently used as a shortcut for the if statement.",
+    "date": "2018-01-17",
+    "format": "text/markdown",
+    "image": "/assets/img/javascript-logo.svg"
+  },
+  {
+    "title": "Respond to a button click with an observable",
+    "slug": "respond-to-a-button-click-with-an-observable",
+    "description": "A recipe for responding to a button click with an RxJS Observable.",
+    "date": "2017-12-04",
+    "format": "text/markdown",
+    "image": "/assets/img/rxjs-logo.png"
+  },
+  {
+    "title": "SPARQL examples - construct",
+    "slug": "sparql-examples-construct",
+    "description": "An example SPARQL construct query.",
+    "date": "2017-12-19",
+    "format": "text/markdown",
+    "image": "/assets/img/sparql-logo.png"
+  },
+  {
+    "title": "SPARQL examples - list classes",
+    "slug": "sparql-examples-list-classes",
+    "description": "Example SPARQL queries that can help you list the classes in an ontology.",
+    "date": "2017-12-19",
+    "format": "text/markdown",
+    "image": "/assets/img/sparql-logo.png"
+  },
+  {
+    "title": "SPARQL examples - select",
+    "slug": "sparql-examples-select",
+    "description": "Example SPARQL SELECT queries.",
+    "date": "2017-12-17",
+    "format": "text/markdown",
+    "image": "/assets/img/sparql-logo.png"
+  },
+  {
+    "title": "SPARQL examples - ask",
+    "slug": "sparql-examples-ask",
+    "description": "SPARQL ASK query examples.",
+    "date": "2017-08-31",
+    "format": "text/markdown",
+    "image": "/assets/img/sparql-logo.png"
+  },
+  {
+    "title": "Index of item within Angular ngFor loop",
+    "slug": "index-of-item-within-angular-ngfor-loop",
+    "description": "Here's how to get and print the index (or the iteration number) of the current item in an ngFor loop.",
+    "date": "2017-08-23",
+    "format": "text/markdown",
+    "image": "/assets/img/angular-logo.svg"
+  },
+  {
+    "title": "Set the page title in Angular",
+    "slug": "set-the-page-title-in-angular",
+    "description": "How to set the title of the HTML page in Angular; it's good for SEO!",
+    "date": "2016-10-31",
+    "format": "text/markdown",
+    "image": "/assets/img/angular-logo.svg"
+  },
+  {
+    "title": "Format currency in Angular",
+    "slug": "format-angular-currency",
+    "description": "How to format a number to currency with the currency pipe in Angular.",
+    "date": "2016-04-29",
+    "format": "text/markdown",
+    "image": "/assets/img/angular-logo.svg"
+  },
+  {
+    "title": "How to shrink a Windows VM on VMWare Fusion for Mac",
+    "slug": "shrink-a-windows-vm-on-vmware-fusion-for-mac",
+    "date": "2013-01-05",
+    "format": "text/markdown"
+  }
+
+]
