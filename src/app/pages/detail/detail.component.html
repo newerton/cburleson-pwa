@@ -13,7 +13,15 @@
   -->
   <ion-content no-bounce padding="true">
 
-    <markdown [path]="fetchPath"></markdown>
+    <!-- Test for the format so that, in the future,
+    we can route to different service calls and rendering
+    techniques based on the format -->
+    <div *ngIf="item.format === 'text/markdown'">
+      <markdown [path]="fetchPath"></markdown>
+    </div>
+    <div *ngIf="item.format !== 'text/markdown'">
+      <p>Unknown content format: {{item.format}}</p>
+    </div>
 
   </ion-content>
 
