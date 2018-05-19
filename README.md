@@ -10,7 +10,7 @@ hook it up to [Carbon LDP](https://carbonldp.com).
 
 The generated result from this project can currently be viewed at:
 
-**https://codyburleson.github.io/**
+**[cburleson02.firebaseapp.com](https://cburleson02.firebaseapp.com/home)**
 
 (Please keep in mind, however, that some things do not work as they should when served as github pages; that is only 
 mean to provide a general preview.)
@@ -23,7 +23,9 @@ If you're interested in how I built this app from the very beginning, see all th
 
 ## Developer prerequisites
 
-- Globally install the Angular CLI: `npm install -g @angular/cli`
+- `npm install -g @angular/cli` for Angular CLI
+- `npm install -g firebase-tools` for Firebase tools
+- `npm install http-server -g` for testing pwa under a local web server (after install, run `http-server` on the `dist/pwa/` dir)
 
 ## Usage
 
@@ -37,6 +39,7 @@ npm run e2e              | Run end to end tests
 npm run build            | Build the app for production
 npm run lint             | Run the linter (tslint)
 npm run docker           | Build the docker image and run the container (experimental)
+npm run deploy           | Deploy to prod server
 
 ## Further help
 

@@ -14,4 +14,8 @@ export class BlogFilterComponent implements OnInit {
   ngOnInit() {
   }
 
+  dismiss() {}
+
+  applyFilters() {}
+
 }

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cburleson-pwa": {
+    "pwa": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "www",
+            "outputPath": "dist/pwa",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -21,14 +21,12 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src/assets",
-                "output": "assets"
+                "input": "node_modules/@ionic/angular/dist/ionic/svg",
+                "output": "./svg"
               },
-              {
-                "glob": "**/*",
-                "input": "node_modules/@ionic/angular/dist/ionic",
-                "output": "./ionic"
-              }
+              "src/assets",
+              "src/favicon.ico",
+              "src/manifest.json"
             ],
             "styles": [
               "src/styles.css"
@@ -51,25 +49,26 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "serviceWorker": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "cburleson-pwa:build"
+            "browserTarget": "pwa:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "cburleson-pwa:build:production"
+              "browserTarget": "pwa:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cburleson-pwa:build"
+            "browserTarget": "pwa:build"
           }
         },
         "test": {
@@ -85,7 +84,8 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json"
             ]
           }
         },
@@ -111,7 +111,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "cburleson-pwa:serve"
+            "devServerTarget": "pwa:serve"
           }
         },
         "lint": {
@@ -126,5 +126,5 @@
       }
     }
   },
-  "defaultProject": "cburleson-pwa"
+  "defaultProject": "pwa"
 }
