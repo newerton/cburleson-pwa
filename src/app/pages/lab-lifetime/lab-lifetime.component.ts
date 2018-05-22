@@ -9,7 +9,7 @@ import * as d3 from 'd3';
 @Component({
   selector: 'app-lab-lifetime',
   templateUrl: './lab-lifetime.component.html',
-  styleUrls: ['./lab-lifetime.component.css'],
+  styleUrls: ['./lab-lifetime.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class LabLifetimeComponent implements AfterViewInit {

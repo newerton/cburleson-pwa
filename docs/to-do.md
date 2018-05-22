@@ -9,3 +9,5 @@ document it.
 - Connect Carbon LDP and use the meta type in the blog listing items as a way of routing to the different services.
 - [ ] Icon (icon for android) and use in splash pages
 - [ ] Create and hook up splash pages for iOS
+- [X] Setup to use SCSS
+- [ ] When on mobile make menu close when item selected

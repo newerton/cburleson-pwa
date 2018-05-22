@@ -6,7 +6,7 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css'],
+  styleUrls: ['./detail.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class DetailComponent implements OnInit {
