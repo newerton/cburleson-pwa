@@ -63,6 +63,13 @@
     "image": "/assets/img/sparql-logo.png"
   },
   {
+    "title": "SPARQL examples - filter",
+    "slug": "sparql-examples-filter",
+    "date": "2017-08-31",
+    "format": "text/markdown",
+    "image": "/assets/img/sparql-logo.png"
+  },
+  {
     "title": "Serve static resources with Spring boot",
     "slug": "serve-static-resources-with-spring-boot",
     "date": "2017-08-31",
@@ -102,9 +109,21 @@
     "image": "/assets/img/angular-logo.svg"
   },
   {
+    "title": "Quick and simple caching with Apache Commons JCS",
+    "slug": "caching-with-apache-commons-jcs",
+    "date": "2016-02-19",
+    "format": "text/markdown"
+  },
+  {
     "title": "Start a Simple HTTP Server from any folder on a Mac",
     "slug": "start-simple-http-server-from-any-folder-on-a-mac",
     "date": "2014-10-06",
+    "format": "text/markdown"
+  },
+  {
+    "title": "Getting parts of a URL from the HttpServletRequest object",
+    "slug": "getting-parts-of-url-from-httpservletrequest-object",
+    "date": "2013-09-17",
     "format": "text/markdown"
   },
   {
@@ -124,6 +143,12 @@
     "title": "Installing the Java Plugin for 64bit Firefox on CentOS 6.4",
     "slug": "installing-java-plugin-for-64bit-firefox-on-centos",
     "date": "2013-05-06",
+    "format": "text/markdown"
+  },
+  {
+    "title": "XMLAccess Samples in IBM WebSphere Portal",
+    "slug": "xmlaccess-samples-in-ibm-websphere-portal",
+    "date": "2013-01-24",
     "format": "text/markdown"
   },
   {
