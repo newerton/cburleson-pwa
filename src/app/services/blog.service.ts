@@ -64,8 +64,8 @@ export class BlogService {
       }
     });
 
-
     return this.items;
+
   }
 
   getItemBySlug(slug): Item {

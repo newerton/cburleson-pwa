@@ -19,7 +19,9 @@
     <div *ngIf="item.format === 'text/markdown'">
       <markdown [path]="fetchPath"></markdown>
     </div>
-    <div *ngIf="item.format !== 'text/markdown'">
+    <div *ngIf="item.format === 'text/html'" [innerHTML]="htmlBody">
+    </div>
+    <div *ngIf=" item.format !== 'text/markdown' || item.format !== 'text/html' ">
       <p>Unknown content format: {{item.format}}</p>
     </div>
 

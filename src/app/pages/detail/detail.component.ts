@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BlogService, Item } from '../../services/blog.service';
 import { Title } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-detail',
@@ -20,7 +21,12 @@ export class DetailComponent implements OnInit {
    */
   fetchPath: string;
 
-  constructor(private route: ActivatedRoute, public blogService: BlogService, private titleService: Title) {
+  htmlBody: string;
+
+  constructor(private route: ActivatedRoute,
+              public blogService: BlogService,
+              private titleService: Title,
+              private http: HttpClient) {
     // console.log('DetailComponent > contructor()');
   }
 
@@ -30,6 +36,17 @@ export class DetailComponent implements OnInit {
     this.item = this.blogService.getItemBySlug(itemSlug);
     this.buildFetchPath();
 
+    if( this.item.format === 'text/html' ) {
+      // console.log('-- DetailComponent.ngOnInit > got HTML format: ', this.fetchPath);
+
+      this.http.get(this.fetchPath, {responseType: 'text'}).subscribe(data => {
+        this.htmlBody = data;
+      });
+
+
+    }
+
+
     // console.log('slug: ', itemSlug);
     this.setTitle(this.item.title + '- Cody Burleson');
   }
@@ -38,7 +55,6 @@ export class DetailComponent implements OnInit {
     // console.log('> DetailComponent > ionViewWillEnter()');
     // console.log('this.route.snapshot', this.route.snapshot);
   }
-
 
   private setTitle( newTitle: string) {
     this.titleService.setTitle( newTitle );
@@ -55,6 +71,8 @@ export class DetailComponent implements OnInit {
     let path = '/assets/content/' +  date.replace(/-/g, '/') + '/' + this.item.slug;
     if ( this.item.format === 'text/markdown' ) {
       path += '.md';
+    } else if ( this.item.format === 'text/html' ) {
+      path += '.html';
     }
     this.fetchPath = path;
     // console.log('- DetailComponent > buildFetchPath() > built: ', this.fetchPath);

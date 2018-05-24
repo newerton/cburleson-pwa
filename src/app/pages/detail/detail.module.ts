@@ -7,12 +7,15 @@ import { DetailComponentRoutingModule } from './detail-routing.module';
 
 import { MarkdownModule } from '../../../markdown/markdown.module';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   imports: [
     CommonModule,
     IonicModule,
     DetailComponentRoutingModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    HttpClientModule
   ],
   declarations: [DetailComponent],
   entryComponents: [DetailComponent]

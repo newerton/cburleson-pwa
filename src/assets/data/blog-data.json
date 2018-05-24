@@ -1,8 +1,8 @@
 [
   {
-  "title": "Unkown format",
-  "slug": "unkown-format",
-  "description": "Test case for unkown format",
+  "title": "Unknown format",
+  "slug": "unknown-format",
+  "description": "Test case for unknown format",
   "date": "2018-05-16",
   "format": "text/html"
   },
@@ -13,6 +13,12 @@
     "date": "2018-05-16",
     "format": "text/markdown",
     "image": "/assets/img/docker-logo.png"
+  },
+  {
+    "title": "ZBrush keyboard shortcuts",
+    "slug": "zbrush-keyboard-shortcuts",
+    "date": "2018-05-10",
+    "format": "text/html"
   },
   {
     "title": "JavaScript ternary operator - shortcut to the if statement",
