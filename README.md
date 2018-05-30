@@ -40,6 +40,8 @@ npm run build            | Build the app for production
 npm run lint             | Run the linter (tslint)
 npm run docker           | Build the docker image and run the container (experimental)
 npm run deploy           | Deploy to prod server
+node server.js           | Run the node express web server (always  `npm run build` first)
+npm run express          | Run the PROD build, then the node express web server
 
 ## Further help
 

@@ -8,8 +8,10 @@ const routes: Routes = [
   { path: 'filter', loadChildren: './pages/blog-filter/blog-filter.module#BlogFilterModule' },
   { path: 'blog', loadChildren: './pages/blog/blog.module#BlogModule' },
   { path: 'lab/life-time', loadChildren: './pages/lab-lifetime/lab-lifetime.module#LabLifetimeModule' },
+  { path: 'lab/posts', loadChildren: './pages/posts/posts.module#PostsModule' },
   { path: 'lab', loadChildren: './pages/lab/lab.module#LabModule' },
-  { path: 'about', loadChildren: './pages/about/about.module#AboutModule' },
+  { path: 'about', loadChildren: './pages/about/about.module#AboutModule' }
+
 ];
 
 @NgModule({

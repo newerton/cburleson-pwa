@@ -21,9 +21,16 @@
     </div>
     <div *ngIf="item.format === 'text/html'" [innerHTML]="htmlBody">
     </div>
-    <div *ngIf=" item.format !== 'text/markdown' || item.format !== 'text/html' ">
+
+    <!--
+    ERROR in src/app/pages/detail/detail.component.html(24,10): :
+    Operator '!=' cannot be applied to types '"text/markdown"' and '"text/html"'.
+
+
+    <div *ngIf=" item.format !== 'text/markdown' || item.format != 'text/html' ">
       <p>Unknown content format: {{item.format}}</p>
     </div>
+    -->
 
   </ion-content>
 
