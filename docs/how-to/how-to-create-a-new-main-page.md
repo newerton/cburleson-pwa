@@ -38,6 +38,7 @@ const routes: Routes = [
 })
 export class <Name>ComponentRoutingModule { }
 
+
 ```
 
 ## Step 4 - Create a module for the page component
@@ -67,6 +68,7 @@ import { <Name>ComponentRoutingModule } from './<name>-routing.module';
   entryComponents: [<Name>Component]
 })
 export class <Name>Module {}
+
 
 ```
 

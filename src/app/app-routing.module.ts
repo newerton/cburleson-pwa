@@ -10,8 +10,8 @@ const routes: Routes = [
   { path: 'lab/life-time', loadChildren: './pages/lab-lifetime/lab-lifetime.module#LabLifetimeModule' },
   { path: 'lab/posts', loadChildren: './pages/posts/posts.module#PostsModule' },
   { path: 'lab', loadChildren: './pages/lab/lab.module#LabModule' },
-  { path: 'about', loadChildren: './pages/about/about.module#AboutModule' }
-
+  { path: 'about', loadChildren: './pages/about/about.module#AboutModule' },
+  { path: 'auth', loadChildren: './pages/authoring/authoring.module#AuthoringModule' }
 ];
 
 @NgModule({
