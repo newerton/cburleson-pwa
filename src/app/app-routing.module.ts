@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'lab/posts', loadChildren: './pages/posts/posts.module#PostsModule' },
   { path: 'lab', loadChildren: './pages/lab/lab.module#LabModule' },
   { path: 'about', loadChildren: './pages/about/about.module#AboutModule' },
-  { path: 'auth', loadChildren: './pages/authoring/authoring.module#AuthoringModule' }
+  { path: 'auth', loadChildren: './pages/authoring/authoring.module#AuthoringModule' },
+  { path: 'auth/:slug', loadChildren: './pages/authoring/authoring.module#AuthoringModule' }
 ];
 
 @NgModule({

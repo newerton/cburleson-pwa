@@ -3,7 +3,10 @@ import { QuillEditorComponent } from 'ngx-quill/src/quill-editor.component';
 
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import {ActivatedRoute} from '@angular/router';
 
+
+// See: https://github.com/KillerCodeMonkey/ngx-quill-example
 
 @Component({
   selector: 'app-authoring',
@@ -13,16 +16,27 @@ import { Observable } from 'rxjs';
 })
 export class AuthoringComponent implements OnInit {
 
-  @ViewChild('editor') editor: QuillEditorComponent
+  // @ViewChild('editor') editor: QuillEditorComponent
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    const itemSlug = this.route.snapshot.paramMap.get('slug');
+
+    if (itemSlug) {
+      console.log('Got slug: ', itemSlug);
+      // this.editor.content = 'Got slug: ' + itemSlug;
+    } else {
+      console.log('No slug to load.');
+    }
+
+    /*
     this.editor
       .onContentChanged
       .pipe(
-        //wait .4s between keyups to emit current value
-        //throw away all other values
+        // wait .4s between keyups to emit current value
+        // throw away all other values
         debounceTime(400),
         distinctUntilChanged()
       )
@@ -30,10 +44,12 @@ export class AuthoringComponent implements OnInit {
         console.log('view child + directly subscription', data);
         console.log('HTML: ', data.html);
       });
+      */
   }
 
+  /*
   setFocus($event) {
     $event.focus();
-  }
+  }*/
 
 }

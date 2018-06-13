@@ -52,8 +52,6 @@ export class BlogComponent implements OnInit {
         this.updateSchedule();
       }
     });*/
-
-
   }
 
   async presentModal() {
