@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation  } from '@angular/core';
-import { QuillEditorComponent } from 'ngx-quill/src/quill-editor.component';
+// import { QuillEditorComponent } from 'ngx-quill/src/quill-editor.component';
 
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -17,6 +17,8 @@ import {ActivatedRoute} from '@angular/router';
 export class AuthoringComponent implements OnInit {
 
   // @ViewChild('editor') editor: QuillEditorComponent
+
+  ckeditorContent = '<p>Some html</p>';
 
   constructor(private route: ActivatedRoute) { }
 
@@ -47,9 +49,35 @@ export class AuthoringComponent implements OnInit {
       */
   }
 
-  /*
-  setFocus($event) {
-    $event.focus();
-  }*/
+  // Called after editor changed and after the debounce, so there's a pause
+  // after you stop typing and then this is called.
+  onChange($event) {
+    console.log('>> AuthoringComponent.onChange');
+  }
+
+  // Called EVERY time the editor is changed
+  onEditorChange($event) {
+    console.log('>> AuthoringComponent.onEditorChange');
+  }
+
+  onReady($event) {
+    console.log('>> AuthoringComponent.onReady');
+  }
+
+  onFocus($event) {
+    console.log('>> AuthoringComponent.onFocus');
+  }
+
+  onBlur($event) {
+    console.log('>> AuthoringComponent.onBlur');
+  }
+
+  onContentDom($event){
+    console.log('>> AuthoringComponent.onContentDom');
+  }
+
+  onFileUploadRequest($event) {
+    console.log('>> AuthoringComponent.onFileUploadRequest');
+  }
 
 }
