@@ -5,6 +5,15 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 
+import { environment } from './../../environments/environment';
+
+import { Log } from 'ng2-logger/client';
+
+const log = Log.create('BlogService');
+// if (environment.production) {
+  // Log.setProductionMode();
+// }
+
 export interface Item {
   title: string;
   slug: string;
@@ -22,17 +31,16 @@ export class BlogService {
   public items: Item[];
 
   constructor(public http: HttpClient) {
-    console.log('>> BlogService.constructor');
+    log.d('> constructor');
   }
 
   load(): any {
-    console.log('>> BlogService.load');
-
+    log.d('> load');
     if (this.items) {
       // The of operator accepts a number of items as parameters, and returns an Observable that emits each of
       // these parameters, in order, as its emitted sequence. In this case, we will only be returning this.items
       // to any subscriber.
-      console.log('<< BlogService.load < returning previously fetched data: %o', this.items);
+      log.d('< load < returning previously fetched data', this.items);
       return Observable.of(this.items);
     } else {
       // http.get() creates an observable.
@@ -41,14 +49,14 @@ export class BlogService {
       //
       // The Map operator applies a function of your choosing to each item emitted by the source Observable, and
       // returns an Observable that emits the results of these function applications.
-      console.log('<< BlogService < load() < returning data with new fetch');
+      log.d('< load < returning data with new fetch');
       return this.http.get('assets/data/blog-data.json').map(this.processData, this);
     }
   }
 
   // A place for post-processing, before making data available to the view.
   processData(data: Item[]) {
-    console.log('>> BlogService.processData(%o)', data);
+    log.d('> processData', data);
 
     // Note: JSON is an assumed default and no longer needs to be explicitly parsed like this:
     // this.data = data.json();
@@ -60,7 +68,7 @@ export class BlogService {
       // item has no image, give it the default thumbnail image.
       if ( !item.image ) {
         item.image = '/assets/img/thumbnail-blog-post.png';
-        console.log(item.slug + ' has no image');
+        log.d('- processData > item has no image', item.slug);
       }
     });
 
@@ -69,8 +77,25 @@ export class BlogService {
   }
 
   getItemBySlug(slug): Item {
-    console.log('>> BlogService.getItemBySlug("%s")', slug);
+    log.d('> getItemBySlug', slug);
     return this.items.find(item => item.slug === slug);
+  }
+
+  /**
+   * Constructs the physical path by which the content file will be fetched,
+   * which is a different path than the URL represented by the route.
+   *
+   * @param item
+   */
+  buildFetchPath(item: Item) {
+    const date = item.date;
+    let path = '/assets/content/' +  date.replace(/-/g, '/') + '/' + item.slug;
+    if ( item.format === 'text/markdown' ) {
+      path += '.md';
+    } else if ( item.format === 'text/html' ) {
+      path += '.html';
+    }
+    return path;
   }
 
 }

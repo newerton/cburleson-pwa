@@ -4,7 +4,14 @@ import { Component, OnInit, ViewChild, ViewEncapsulation  } from '@angular/core'
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
+import { BlogService, Item } from '../../services/blog.service';
 
+
+import { Log } from 'ng2-logger/client';
+
+const log = Log.create('AuthoringComponent');
 
 // See: https://github.com/KillerCodeMonkey/ngx-quill-example
 
@@ -17,67 +24,92 @@ import {ActivatedRoute} from '@angular/router';
 export class AuthoringComponent implements OnInit {
 
   // @ViewChild('editor') editor: QuillEditorComponent
+  @ViewChild('myckeditor') ckeditor: any;
 
+  item: Item;
+  fetchPath: string;
+
+  ckeConfig: any;
   ckeditorContent = '<p>Some html</p>';
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+              public blogService: BlogService,
+              private http: HttpClient,
+              private titleService: Title) { }
 
   ngOnInit() {
+
+    this.ckeConfig = {
+      allowedContent: true,
+      extraPlugins: 'divarea',
+      // uiColor: '#99000'
+    };
 
     const itemSlug = this.route.snapshot.paramMap.get('slug');
 
     if (itemSlug) {
-      console.log('Got slug: ', itemSlug);
-      // this.editor.content = 'Got slug: ' + itemSlug;
+      log.d('- ngOnInit > Got slug', itemSlug);
+      // this.ckeditorContent = '<p>Got slug: ' + itemSlug + '</p>';
+
+      this.item = this.blogService.getItemBySlug(itemSlug);
+
+      // console.log(this.item);
+
+      this.fetchPath = this.blogService.buildFetchPath(this.item);
+
+      if ( this.item.format === 'text/html' ) {
+        // console.log('-- DetailComponent.ngOnInit > got HTML format: ', this.fetchPath);
+
+        this.http.get(this.fetchPath, {responseType: 'text'}).subscribe(data => {
+          this.ckeditorContent = data;
+        });
+
+      }
+
     } else {
-      console.log('No slug to load.');
+      log.d('- ngOnInit > No slug to load');
     }
 
-    /*
-    this.editor
-      .onContentChanged
-      .pipe(
-        // wait .4s between keyups to emit current value
-        // throw away all other values
-        debounceTime(400),
-        distinctUntilChanged()
-      )
-      .subscribe(data => {
-        console.log('view child + directly subscription', data);
-        console.log('HTML: ', data.html);
-      });
-      */
+    this.setTitle('Authoring - Cody Burleson');
+
   }
+
+  private setTitle( newTitle: string) {
+    this.titleService.setTitle( newTitle );
+  }
+
+
 
   // Called after editor changed and after the debounce, so there's a pause
   // after you stop typing and then this is called.
   onChange($event) {
-    console.log('>> AuthoringComponent.onChange');
+    log.d('> onChange', $event);
   }
 
   // Called EVERY time the editor is changed
   onEditorChange($event) {
-    console.log('>> AuthoringComponent.onEditorChange');
+    log.d('> onEditorChange', $event);
   }
 
   onReady($event) {
-    console.log('>> AuthoringComponent.onReady');
+    log.d('> onReady', $event);
   }
 
   onFocus($event) {
-    console.log('>> AuthoringComponent.onFocus');
+    log.d('> onFocus', $event);
   }
 
   onBlur($event) {
-    console.log('>> AuthoringComponent.onBlur');
+   log.d('> onBlur', $event);
   }
 
-  onContentDom($event){
-    console.log('>> AuthoringComponent.onContentDom');
+  // triggered when you go from source to wysiwyg  html
+  onContentDom($event) {
+    log.d('> onContentDom', $event);
   }
 
   onFileUploadRequest($event) {
-    console.log('>> AuthoringComponent.onFileUploadRequest');
+    log.d('> onFileUploadRequest', $event);
   }
 
 }

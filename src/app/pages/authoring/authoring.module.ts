@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AuthoringComponent } from './authoring.component';
 import { AuthoringComponentRoutingModule } from './authoring-routing.module';
-// import { QuillModule } from 'ngx-quill'
 import { CKEditorModule } from 'ng2-ckeditor';
 
 @NgModule({
@@ -13,7 +12,6 @@ import { CKEditorModule } from 'ng2-ckeditor';
     CommonModule,
     IonicModule,
     AuthoringComponentRoutingModule,
-    // QuillModule
     FormsModule,
     CKEditorModule
   ],

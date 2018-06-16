@@ -4,6 +4,10 @@ import { BlogService, Item } from '../../services/blog.service';
 import { Title } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 
+import { Log } from 'ng2-logger/client';
+
+const log = Log.create('DetailComponent');
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -27,55 +31,33 @@ export class DetailComponent implements OnInit {
               public blogService: BlogService,
               private titleService: Title,
               private http: HttpClient) {
-    // console.log('DetailComponent > contructor()');
+    log.d('> constructor');
   }
 
   ngOnInit() {
-    // console.log('DetailComponent > ngOnInit()');
+    log.d('> ngOnInit');
     const itemSlug = this.route.snapshot.paramMap.get('slug');
     this.item = this.blogService.getItemBySlug(itemSlug);
-    this.buildFetchPath();
 
-    if( this.item.format === 'text/html' ) {
-      // console.log('-- DetailComponent.ngOnInit > got HTML format: ', this.fetchPath);
+    // this.buildFetchPath();
+    this.fetchPath = this.blogService.buildFetchPath(this.item);
 
+    if ( this.item.format === 'text/html' ) {
       this.http.get(this.fetchPath, {responseType: 'text'}).subscribe(data => {
         this.htmlBody = data;
       });
-
-
     }
 
-
-    // console.log('slug: ', itemSlug);
-    this.setTitle(this.item.title + '- Cody Burleson');
+    this.setTitle(this.item.title + ' - Cody Burleson');
   }
 
-  ionViewWillEnter() {
+  // ionViewWillEnter() {
     // console.log('> DetailComponent > ionViewWillEnter()');
     // console.log('this.route.snapshot', this.route.snapshot);
-  }
+  // }
 
   private setTitle( newTitle: string) {
     this.titleService.setTitle( newTitle );
-  }
-
-  /**
-   * Constructs the physical path by which the content file will be fetched,
-   * which is a different path than the URL represented by the route.
-   *
-   * @param item
-   */
-  buildFetchPath() {
-    const date = this.item.date;
-    let path = '/assets/content/' +  date.replace(/-/g, '/') + '/' + this.item.slug;
-    if ( this.item.format === 'text/markdown' ) {
-      path += '.md';
-    } else if ( this.item.format === 'text/html' ) {
-      path += '.html';
-    }
-    this.fetchPath = path;
-    // console.log('- DetailComponent > buildFetchPath() > built: ', this.fetchPath);
   }
 
 }

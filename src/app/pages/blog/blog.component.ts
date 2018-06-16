@@ -2,7 +2,9 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {BlogService, Item} from '../../services/blog.service';
 import { Title } from '@angular/platform-browser';
 import {ModalController} from '@ionic/angular';
-import {BlogFilterComponent} from '../blog-filter/blog-filter.component';
+import { Log } from 'ng2-logger/client';
+
+const log = Log.create('BlogComponent');
 
 @Component({
   selector: 'app-blog',
@@ -20,38 +22,24 @@ export class BlogComponent implements OnInit {
     public modalCtrl: ModalController) { }
 
   ngOnInit() {
-    console.log('> BlogComponent.ngOnInit()');
+    log.d('> ngOnInit');
     this.setTitle('Blog - Cody Burleson');
   }
 
   ionViewWillEnter() {
-    console.log('- BlogComponent.ionViewWillEnter()');
+    log.d('> ionViewWillEnter');
     this.blogService.load().subscribe((data: Item[]) => {
       this.items = data;
     });
-    console.log('- BlogComponent.ionViewWillEnter() > items:%o', this.items);
+    log.d('- ionViewWillEnter > items', this.items);
   }
 
   ionViewDidLoad() {
-    console.log('> BlogComponent.ionViewDidLoad()');
+    log.d('> ionViewDidLoad');
   }
 
   public setTitle( newTitle: string) {
     this.titleService.setTitle( newTitle );
-  }
-
-  showFilter() {
-    console.log('> BlogComponent > showFilter()');
-
-    // const modal = this.modalCtrl.create('BlogFilterComponent');
-    // modal.present();
-    /*
-    modal.onWillDismiss((data: any[]) => {
-      if (data) {
-        this.excludeTracks = data;
-        this.updateSchedule();
-      }
-    });*/
   }
 
   async presentModal() {
@@ -64,7 +52,7 @@ export class BlogComponent implements OnInit {
   }
 
   toggleSearch() {
-    console.log('> BlogComponent > toggleSearch()');
+   log.d('toggleSearch');
   }
 
 }
