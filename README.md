@@ -49,15 +49,21 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## TO DO
 
-- [ ] Experiment with Capacitor
+- [ ] Fix blog service so things load by direct URL (not jjust navigating)
+- [ ] Make SEO friendly; see: https://blog.pusher.com/make-angular-4-app-seo-friendly/
+- [ ] Add all content from existing wiki
+- [ ] Add blog filter to filter by topic
+- [ ] Add search
+- [ ] Consider building Google Analytics web component
 - [ ] Add the Lifetime Calendar (modified for better mobile experience)
 - [ ] Systemetize tagging the docker container and publishing it
 - [ ] After getting served on my own server, test all the PWA stuff (adding to home screen, etc.)
 - [ ] Integrate [Carbon LDP](https://carbonldp.com)
+- [ ] Experiment with Capacitor
 - [ ] Experiment with Electron
 - [ ] Experiment with Web Components built from the Stencil compiler
 - [ ] Experiment with test framework and add tests
 - [ ] Change ico (and app icons)
 - [ ] Script update package.json version as well as a version no. that can display on screen
 - [ ] Consider node web app for running RESTful web services and more robust server-side than just static files
-- [ ] Consider building Google Analytics web component
+
