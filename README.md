@@ -25,7 +25,6 @@ If you're interested in how I built this app from the very beginning, see all th
 
 - `npm install -g @angular/cli` for Angular CLI
 - `npm install -g firebase-tools` for Firebase tools
-- `npm install http-server -g` for testing pwa under a local web server (after install, run `http-server` on the `dist/pwa/` dir)
 
 ## Usage
 
@@ -36,7 +35,7 @@ ng serve                 | Start the app in development mode without launching b
 npm start                | Start the app in development mode and launch browser.
 npm run test             | Run unit tests with karma and jasmine
 npm run e2e              | Run end to end tests
-npm run build            | Build the app for production
+npm run build            | Build the app for production (then run `python -m SimpleHTTPServer 8000` on `dist/pwa` to test)
 npm run lint             | Run the linter (tslint)
 npm run docker           | Build the docker image and run the container (experimental)
 npm run deploy           | Deploy to prod server
